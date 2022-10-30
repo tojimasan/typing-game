@@ -15,10 +15,10 @@ export const App = () => {
     color: "tomato"
   };
   const handleChange = (e) => {
-    const pressedKey = e.target.value.slice(-1);
+    const pressedKey = e.nativeEvent.data;
+
     // pressedKeyとproblem[index]が同じ文字であれば、次の文字へ進む
     // TODO: pressedKeyとproblem[index]が同じ文字 && problem.lastOfIndex === indexであれば、次の問題文を提示する
-
     if (pressedKey === problem[index]) {
       setIsWrong(false);
       if (problem.length <= index + 1) {
