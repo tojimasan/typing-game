@@ -14,17 +14,13 @@
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-react": "^7.31.10",
-    "prettier": "^2.7.1",
     "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "npx eslint src"
+    "eject": "react-scripts eject"
   },
   "browserslist": [
     ">0.2%",
