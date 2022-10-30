@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Center, Input, VStack } from "@chakra-ui/react";
-import { randomWord } from "./utils/ramdomWord";
+import { randomWord } from "./utils/randomWord";
 
 export const App = () => {
   // TODO: ゲームスタート時の処理を追加する
@@ -8,12 +8,19 @@ export const App = () => {
   const [problem, setProblem] = useState("Type any button to start.");
   const [index, setIndex] = useState(0);
   const [isWrong, setIsWrong] = useState(false);
+  const [errorCount, setErrorCount] = useState(0);
+
   const currectCharCss = {
     color: "white",
   };
   const errorCharCss = {
     color: "tomato",
   };
+  const supportTextCss = {
+    color: '#DB36B7',
+    fontSize: '20px',
+  };
+
   const handleChange = (e) => {
     const pressedKey = e.nativeEvent.data;
 
@@ -28,6 +35,7 @@ export const App = () => {
         setIndex((prev) => prev + 1);
       }
     } else {
+      setErrorCount((prev) => prev + 1);
       setIsWrong(true);
     }
   };
@@ -59,6 +67,7 @@ export const App = () => {
       <VStack>
         {stylingProblemParagraph(problem, index, isWrong)}
         <Input opacity="0" autoFocus={true} onChange={(e) => handleChange(e)} />
+        <p style={supportTextCss}>Miss: {errorCount}</p>
       </VStack>
     </Center>
   );
