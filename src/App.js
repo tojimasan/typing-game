@@ -9,10 +9,10 @@ export const App = () => {
   const [index, setIndex] = useState(0);
   const [isWrong, setIsWrong] = useState(false);
   const currectCharCss = {
-    color: "white",
+    color: "white"
   };
   const errorCharCss = {
-    color: "tomato",
+    color: "tomato"
   };
   const handleChange = (e) => {
     const pressedKey = e.nativeEvent.data;
