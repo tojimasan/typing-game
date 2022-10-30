@@ -198,7 +198,7 @@ const words = [
   "jaded",
   "partner",
   "industry",
-  "faithful"
+  "faithful",
 ];
 
 export const randomWord = () => {
