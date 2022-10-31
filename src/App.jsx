@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Center, Input, VStack } from "@chakra-ui/react";
+import { Center, Input, VStack, IconButton, Box } from "@chakra-ui/react";
+import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { FiGithub } from "react-icons/fi";
 import { randomWord } from "./utils/randomWord";
 
 export const App = () => {
   // TODO: ゲームスタート時の処理を追加する
   // 仕様: 文字が入力されるとゲームが始まること
-  const [problem, setProblem] = useState("Type any button to start.");
+  const [problem, setProblem] = useState("Type any key to start.");
   const [index, setIndex] = useState(0);
   const [isWrong, setIsWrong] = useState(false);
   const [errorCount, setErrorCount] = useState(0);
+  const theme = "dark";
 
   const currectCharCss = {
     color: "white",
@@ -17,8 +20,28 @@ export const App = () => {
     color: "tomato",
   };
   const supportTextCss = {
-    color: '#DB36B7',
-    fontSize: '20px',
+    color: "#DB36B7",
+    fontSize: "20px",
+  };
+  const thimeIconButton = () => {
+    const variant = "ghost";
+    const size = "md";
+
+    return theme === "dark" ? (
+      <IconButton
+        aria-label="Turn to light theme"
+        icon={<SunIcon />}
+        variant={variant}
+        size={size}
+      />
+    ) : (
+      <IconButton
+        aria-label="Turn to dark theme"
+        icon={<MoonIcon />}
+        variant={variant}
+        size={size}
+      />
+    );
   };
 
   const handleChange = (e) => {
@@ -69,6 +92,19 @@ export const App = () => {
         <Input opacity="0" autoFocus={true} onChange={(e) => handleChange(e)} />
         <p style={supportTextCss}>Miss: {errorCount}</p>
       </VStack>
+      <Box pos="absolute" top="4" right={[4, 8]}>
+        {thimeIconButton()}
+        <IconButton
+          as="a"
+          href="https://github.com/tojimasan/typing-game"
+          target="_blank"
+          aria-label="Open GitHub"
+          icon={<FiGithub />}
+          variant="ghost"
+          size="md"
+          ml={4}
+        />
+      </Box>
     </Center>
   );
 };
