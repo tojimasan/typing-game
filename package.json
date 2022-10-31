@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "npx eslint src"
+    "lint": "eslint src",
+    "check": "prettier --check src"
   },
   "browserslist": [
     ">0.2%",
