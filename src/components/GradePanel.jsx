@@ -10,7 +10,7 @@ const grade = (score, heading) => {
   );
 };
 
-export const GradePanel = () => {
+export const GradePanel = ({ typeCount, errorCount }) => {
   return (
     <HStack
       color="white"
@@ -21,8 +21,8 @@ export const GradePanel = () => {
       gap={8}
     >
       {grade("00:00", "Time")}
-      {grade("0", "Type")}
-      {grade("0", "Miss")}
+      {grade(typeCount, "Type")}
+      {grade(errorCount, "Miss")}
     </HStack>
   );
 };
