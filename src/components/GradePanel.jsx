@@ -1,4 +1,5 @@
 import { VStack, HStack, Divider } from "@chakra-ui/react";
+import { useTimeContext } from "../hooks/useTimeContext";
 
 const grade = (score, heading) => {
   return (
@@ -11,6 +12,13 @@ const grade = (score, heading) => {
 };
 
 export const GradePanel = ({ typeCount, errorCount }) => {
+  const { time } = useTimeContext();
+  const hour = Math.floor(time / 3600);
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60 < 10 ? `0${time % 60}` : time % 60;
+  const timeString =
+    hour > 0 ? `${hour}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
+
   return (
     <HStack
       color="white"
@@ -20,7 +28,7 @@ export const GradePanel = ({ typeCount, errorCount }) => {
       borderRadius="8px"
       gap={8}
     >
-      {grade("00:00", "Time")}
+      {grade(timeString, "Time")}
       {grade(typeCount, "Type")}
       {grade(errorCount, "Miss")}
     </HStack>
