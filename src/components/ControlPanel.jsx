@@ -20,7 +20,6 @@ export const ControlPanel = () => {
         variant="ghost"
         size="md"
         colorScheme={bg}
-        // FIX: click後もinputにfocusされるようにする
         onClick={toggleColorMode}
       />
       <IconButton
