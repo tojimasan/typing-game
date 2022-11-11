@@ -1,14 +1,29 @@
 import { createContext, useState } from "react";
-import { useInterval } from "../hooks/useInterval";
+import { useEffect } from "react";
 
 const TimeContext = createContext(0);
 
 const TimeProvider = ({ children }) => {
   const [time, setTime] = useState(0);
-  useInterval(() => setTime((prev) => prev + 1));
+  const [didStart, setDidStart] = useState(false);
+  const startTimer = () => {
+    setDidStart(true);
+  };
+  const tick = () => {
+    setTime((t) => t + 1);
+  };
+
+  useEffect(() => {
+    if (didStart) {
+      const timerId = setInterval(tick, 1000);
+
+      return () => clearInterval(timerId);
+    }
+  }, [time, didStart]);
 
   const providerValue = {
     time,
+    startTimer,
   };
 
   return (
