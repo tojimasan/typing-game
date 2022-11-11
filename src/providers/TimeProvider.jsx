@@ -1,5 +1,4 @@
-import { createContext, useState } from "react";
-import { useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const TimeContext = createContext(0);
 
