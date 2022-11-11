@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useProblemContext } from "./useProblemContext";
+import { useTimeContext } from "./useTimeContext";
 
 export const useCheckUserInput = () => {
   const { problem, setNewProblem } = useProblemContext();
@@ -7,8 +8,10 @@ export const useCheckUserInput = () => {
   const [typeCount, setTypeCount] = useState(0);
   const [isWrong, setIsWrong] = useState(false);
   const [errorCount, setErrorCount] = useState(0);
+  const { startTimer } = useTimeContext();
 
   const onHandleChange = (e) => {
+    startTimer();
     setTypeCount((prev) => prev + 1);
     const pressedKey = e.nativeEvent.data;
 
