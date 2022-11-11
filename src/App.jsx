@@ -2,7 +2,6 @@ import {
   VStack,
   Box,
   Center,
-  Input,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
@@ -11,6 +10,7 @@ import { Problem } from "./components/Problem";
 import { GradePanel } from "./components/GradePanel";
 import { useProblemContext } from "./hooks/useProblemContext";
 import { useCheckUserInput } from "./hooks/useCheckUserInput";
+import { Input } from "./components/Input";
 import { useEffect, useRef } from "react";
 
 export const App = () => {
@@ -33,14 +33,7 @@ export const App = () => {
           <GradePanel typeCount={typeCount} errorCount={errorCount} />
         </VStack>
       </Center>
-      <Input
-        ref={ref}
-        opacity={0}
-        pos={"absolute"}
-        bottom={"10"}
-        left={"0"}
-        onChange={onHandleChange}
-      />
+      <Input ref={ref} onChange={onHandleChange} />
     </Box>
   );
 };
