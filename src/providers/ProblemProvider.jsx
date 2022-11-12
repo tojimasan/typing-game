@@ -1,13 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { RandomWord } from "../utils/randomWord";
 
 const ProblemContext = createContext("");
 
 const ProblemProvider = ({ children }) => {
   const [problem, setProblem] = useState("");
-  const setNewProblem = () => {
-    setProblem(RandomWord());
-  };
+  const setNewProblem = useCallback(() => setProblem(RandomWord()), []);
 
   const providerValue = {
     problem,
