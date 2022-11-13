@@ -18,10 +18,16 @@ const stylingProblemParagraph = (string, i, isError = false) => {
   );
 };
 
-export const Problem = ({ problem, index, isWrong }) => {
+export const Problem = ({ problem, index, isWrong, onTap }) => {
   const color = useColorModeValue("gray.400", "gray.500");
   return (
-    <Box fontWeight="bold" fontSize="60px" color={color} letterSpacing={1}>
+    <Box
+      fontWeight="bold"
+      fontSize="60px"
+      color={color}
+      letterSpacing={1}
+      onClick={onTap}
+    >
       {stylingProblemParagraph(problem, index, isWrong)}
     </Box>
   );
