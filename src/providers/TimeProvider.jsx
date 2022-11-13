@@ -1,16 +1,15 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 
 const TimeContext = createContext(0);
 
 const TimeProvider = ({ children }) => {
   const [time, setTime] = useState(0);
   const [didStart, setDidStart] = useState(false);
-  const startTimer = () => {
-    setDidStart(true);
-  };
-  const tick = () => {
+  const startTimer = useCallback(() => setDidStart(true), []);
+
+  const tick = useCallback(() => {
     setTime((t) => t + 1);
-  };
+  }, []);
 
   useEffect(() => {
     if (didStart) {
